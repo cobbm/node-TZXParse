@@ -51,10 +51,18 @@ console.log(tzxBlocks);
 ```
 Each block contains a `blockID` attribute which represents the block type. This can be looked up using `node-tzxparse.BLOCK_IDS`, for example:
 ```
-// block index 0 is typically a "glue" header (type 0x5a (90 decimal):
+// block index 0 is typically a "glue" header (type 0x5a (90 decimal)):
 var blockID = tzxBlocks[0].blockID; // => 90
 
 // what kind of block is this?
-var blockType = tzxParse.BLOCK_IDS[blockID].name
+var blockType = tzxParse.BLOCK_IDS[blockID].name;
 // should return "\"Glue\" block (90 dec, ASCII Letter 'Z')"
 ```
+## API
+### `parseTZX(data, options?)`
+#### - `data`: Type: `Buffer`
+  The data to parse
+#### - `options`: Type: `Object`
+  Optional object which may consist of the following options: 
+  - `skipHeaders`: Type: Boolean, default: false<br />
+    Skip all header blocks (type: 0x5a / 90 dec)
