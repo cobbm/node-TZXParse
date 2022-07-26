@@ -5,6 +5,7 @@ A parser/serializer for TZX (ZX Spectrum) tape files written in JavaScript for N
 The currently supported block types are:
 1. `0x10`: Standard speed data block
 2. `0x5a`: "Glue" block (90 dec, ASCII Letter 'Z')
+Which is enough to parse .tzx files which contain ZX BASIC programs as saved by the ZX Spectrum using the BASIC `SAVE` command.
 
 ## Example
 ### Parsing a .tzx file
@@ -60,9 +61,12 @@ var blockType = tzxParse.BLOCK_IDS[blockID].name;
 ```
 ## API
 ### `parseTZX(data, options?)`
+parses a .tzx file and returns an array for each block found inside the file
 #### - `data`: Type: `Buffer`
-  The data to parse
+  The data to parse (.tzx file)
 #### - `options`: Type: `Object`
   Optional object which may consist of the following options: 
   - `skipHeaders`: Type: Boolean, default: false<br />
     Skip all header blocks (type: 0x5a / 90 dec)
+
+This parser was reverse engineered via the detailed description of the .tzx format available at: http://k1.spdns.de/Develop/Projects/zasm/Info/TZX%20format.html
