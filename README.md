@@ -1,6 +1,8 @@
 # node-TZXParse
 A parser/serializer for TZX (ZX Spectrum) tape files written in JavaScript for Node.JS
 
+This parser was reverse engineered via the detailed description of the .tzx format available at: http://k1.spdns.de/Develop/Projects/zasm/Info/TZX%20format.html
+
 # This project is not complete!
 The currently supported block types are:
 1. `0x10`: Standard speed data block
@@ -68,5 +70,3 @@ parses a .tzx file and returns an array for each block found inside the file
   Optional object which may consist of the following options: 
   - `skipHeaders`: Type: Boolean, default: false<br />
     Skip all header blocks (type: 0x5a / 90 dec)
-
-This parser was reverse engineered via the detailed description of the .tzx format available at: http://k1.spdns.de/Develop/Projects/zasm/Info/TZX%20format.html
